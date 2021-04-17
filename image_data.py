@@ -75,6 +75,8 @@ def im2binimage2(im):
     # resizer = pilkit.processors.ResizeToFit(fixed_width)
     # import in B&W, probably does not matter
     img = Image.open(im).convert('L')
+    if img.width>img.height:
+    	img = img.rotate(90, expand=True)
     # img = Image.open(im)
     # img.show()
     
@@ -112,9 +114,9 @@ def im2binimage2(im):
     # blackandwhite_img.show()
     np_img = np.array(enhanced_img).astype(int)
     # flipping the ones and zeros
-    np_img[np_img == 1] = 100
-    np_img[np_img == 0] = 1
-    np_img[np_img == 100] = 0
+    np_img[np_img>0] = 2
+    np_img[np_img==0] = 1
+    np_img[np_img==2] = 0
 
     return binimage2bitstream(np_img)
 
