@@ -104,11 +104,11 @@ def im2binimage2(im):
     m2 = dither(m)
     # out = Image.fromarray(m2[::-1,:]).convert('1')
     out = Image.fromarray(m2[::-1,:])
-    out.show()
+    #out.show()
     # the ditherer is stupid and does not make black and white images, just... almost so this fixes that
     enhancer = ImageEnhance.Contrast(out)
     enhanced_img = enhancer.enhance(4.0)
-    enhanced_img.show()
+    #enhanced_img.show()
     # now convert it to true black and white
     # blackandwhite_img = enhanced_img.convert('1')
     # blackandwhite_img.show()
